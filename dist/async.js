@@ -22,6 +22,13 @@ var funcaoMuitoPesadaPromise = new Promise(function (resolve, reject) {
     reject('Deu erro na interação dos números');
   }
 });
+var promiseComParametros = function promiseComParametros(login, senha) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve("logado com o usu\xE1rio: ".concat(login));
+    }, 3000);
+  });
+};
 console.log("inicio");
 // console.log(funcaoMuitoPesada());
 funcaoMuitoPesadaPromise.then(function (resultado) {
@@ -42,13 +49,16 @@ function _execucaoPrincipal() {
           console.log("inicio");
 
           // await funcaoMuitoPesadaPromise.then(resultado => console.log(resultado)).catch(erro => console.log(erro));
-          _context.next = 3;
+          promiseComParametros('yurividal123@hotmail.com', 123456).then(function (resultado) {
+            console.log(resultado);
+          });
+          _context.next = 4;
           return funcaoMuitoPesadaPromise;
-        case 3:
+        case 4:
           resultado = _context.sent;
           console.log(resultado);
           console.log("fim");
-        case 6:
+        case 7:
         case "end":
           return _context.stop();
       }
